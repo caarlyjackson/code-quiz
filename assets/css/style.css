@@ -82,8 +82,8 @@ h1, .page-title {
     justify-content: center;
     align-items: center;
     position: absolute;
-    margin-left: 25%;
-    margin-right: 25%;
+    /* margin-left: 25%; */
+    /* margin-right: 25%; */
     /* Border */
     box-sizing: border-box;
     background-color: white;
@@ -92,7 +92,7 @@ h1, .page-title {
     border-style: solid;
     border-radius: 14px;
     /* border-image: auto; */
-    padding: 20px;
+    padding: 25px;
 }
 
 h3, .question {
