@@ -1,72 +1,68 @@
 const startButton = document.getElementById("start-btn");
 var highScoreButton = document.getElementsByClassName("high-score-btn"); // Goes to log of past high scores (with initials and inorder).
 var timerCount = document.getElementsByClassName("time");
-var scoreButton = document.getElementsByClassName("score");
+var NewScoreEl = document.getElementsByClassName("enter-new-score");
 var resetButton = document.getElementById("reset-btn");
-var gameOverMessage = document.getElementById("game-over-message");
-// const myQuestions = document.getElementById("question");
+const questionEl = document.getElementById("question");
+var question = document.getElementsByClassName("question");
 const answers = document.getElementById("answer-options");
-const answeButtonsEl = document.getElementById("answer-btn");
-
-var score;
+const answerButtonsEl = document.getElementById("answer-btn");
 var scoreCount;
 var timerCount = [""];
 var correctAnswer = "";
 
 // Questions with Answers and Correct Answer Array
-const myQuestions = [
+questionEl = [
     {
         question: "Inside which HTML element do we put the JavaScript?",
-        answers: {
-            a: "<scripting>",
-            b: "<script>",
-            c: "<javascript>",
-            d: "<js>"
-        },
-        correctAnswer: 'b'
+        answers: [
+            { text: "<scripting>", correct: false },
+            { text: "<script>", correct: true },
+            { text: "<javascript>", correct: false },
+            { text: "<js>", correct: false }
+        ]
     },
     {
-        question: "Which of the following is the largest HTML heading?",
-        answers: {
-            a: "<head>",
-            b: "<h6>",
-            c: "<h1>",
-            d: "<header>"
-        },
-        correctAnswer: 'c'
+        question: "Inside which HTML element do we put the JavaScript?",
+        answers: [
+            { text: "<head>", correct: false },
+            { text: "<h6>", correct: false },
+            { text: "<h1>", correct: true },
+            { text: "<header>", correct: false }
+        ]
     },
     {
         question: "How do you create a function in JavaScript?",
-        answers: {
-            a: "function myFunction()",
-            b: "function = myFunction()",
-            c: "function:myFunction()"
-        },
-        correctAnswer: 'a'
+        answers: [
+            { text: "function myFunction()", correct: true },
+            { text: "function = myFunction()", correct: false },
+            { text: "function:myFunction()", correct: false }
+        ]
     },
     {
         question: "How to write an IF statement in JavaScript?",
-        answers: {
-            a: "if i = 6",
-            b: "if i == 6 then",
-            c: "if i = 6 then",
-            d: "if (i == 6)"
-        },
-        correctAnswer: 'd'
-    },
+        answers: [
+            { text: "if i = 6", correct: false },
+            { text: "if i == 6 then", correct: false },
+            { text: "if i = 6 then", correct: false },
+            { text: "if (i == 6)", correct: true }
+        ]
+    }
+
 ];
 
 // Init
 function init() {
-    getScore();
+    getScore()
 }
 
 // Game begins.
-startButton.addEventListener("click", startGame == true); {
+startButton.addEventListener("click", startGame === true); {
     function startGame() {
         console.log("Started");
         startButton.classList.add("hide")
         timerCount = 60;
+        setNextQuestion();
 
         // Prevents start button from being clicked when round is in progress
         startButton.disabled = true;
@@ -74,25 +70,40 @@ startButton.addEventListener("click", startGame == true); {
         startTimer()
     }
 }
-
 startGame();
 
+function setNextQuestion() {
+    resetState()
+    showQuestion(questionEl)
+}
+
+// Question and Answer
 function showQuestion(question) {
+    questionEl.innerText = question.question;
+    question.answers.array.forEach(answer => {
+        const button = document.createElement('button')
+        button.innerText = answer.text
+        button.classList.add('btn')
+
+        // If the user gets the correct answer
+        if (answer.correct) {
+            button.dataset.correct = answer.correct
+        }
+        button.addEventListener('click', selectAnswer)
+        answerButtonsEl.appendChild(button)
+    });
+}
+
+function selectAnswer() {
 
 }
 
 
-// // If the user gets the correct answer
-// function correctAnswer() {
-//     if (correctAnswer === true)
-//                                             // Add in sound affect and alert to correct answer
-
-// // If the user gets the wrong answer
-//     } else {
-//     // Lose 10 seconds from timeCount
-//     timeCount--;
-//     // Add in obnoxious sound affect and alert to wrong answer
-
+// Add in sound affect and alert to correct answer
+// } else { // If the user gets the wrong answer
+// // Lose 10 seconds from timeCount
+// timeCount--;
+// // Add in obnoxious sound affect and alert to wrong answer
 // }
 
 function setTime() {
@@ -102,38 +113,61 @@ function setTime() {
     timeEl.textContent = secondsLeft;
 }
 
-// If timeCount === 0
-document.addEventListener(function (event) {
+
+// Go to Score and Initial
+function timeCount(addEventListener[event]) {
     if (timeCount === 0) {
-        function myFunction() { // Declare a function
-            document.getElementById("gameOverMessage").innerHTML = "Game Over!";
-        }
-        myFunction(); // Call the function
-        return;
-    }
+        NewScoreEl.addEventListener("click", startGame === true); {
+            function startGame() {
+                console.log("Started");
+                startButton.classList.add("hide")
+                timerCount = 60;
+                setNextQuestion();
 
-    // Local Storage Of Previous Scores
-    var scoreCount = localStorage.getItem("count");
-    console.log(scoreCount);
+                // function timeCount.addEventListener(Event) {
+                //     if (timeCount === 0) {
+                function myFunction() { // Declare a function
+                    NewScoreEl.classList.add("hide")
+                }
+                myFunction(); // Call the function
+                return;
+            };
+
+            // FINAL SCORE COUNT AND HIGH SCORE
+            // Local Storage Of Previous Scores
+            // User Info Variable
+            var Player = {
+                playerInitial: playerInitial.value,
+                scoreCount: timeCount.value,
+            };
+            // var newScore = document.getElementsByClassName("new-score");
+            var scoreCount = localStorage.getItem("count");
+            console.log(scoreCount);
+            scoreCount.textContent = "Your score is " + timeCount;
 
 
 
-    // Attach event listener to start button to call startGame function on click
-    startButton.addEventListener("click", startGame);
 
-    // Calls init() so that it fires when page opened
-    init();
+            // High Score
+            highScore.textContent = playerInitial + " - " + scoreCount;
 
-    // Reset button
-    var resetButton = document.querySelector(".reset-button");
-    function resetGame() {
-        // Resets score and loss counts
-        scoreCount = 0;
-        // Renders win and loss counts and sets them into client storage
-        setWins()
-        setLosses()
-    }
+            // View all High Scores page
+            function highScoreButton() {
+                highScoreButton.addEventListener(click,)
 
-    // Attaches event listener to button
-    resetButton.addEventListener("click", resetGame)
-});
+                // Hide
+                highScoreButton.classList.add("hide")
+            }
+
+            // Reset button
+            var resetButton = document.querySelector(".reset-button");
+            function resetGame() {
+                // Resets score and loss counts
+                scoreCount = 0;
+                // Renders win and loss counts and sets them into client storage
+                setWins()
+                setLosses()
+            };
+
+            // Attaches event listener to button
+            resetButton.addEventListener("click", resetGame === true)
