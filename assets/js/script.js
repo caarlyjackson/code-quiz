@@ -5,16 +5,17 @@ const gameWindow = document.getElementById("game-window");
 const scoreEntryWindow = document.getElementById("score-entry-window");
 const highScoreButton = document.getElementById("high-score-btn");
 const questionEl = document.getElementById("question");
-var timerElement = document.getElementById("time");
+const answersEl = document.getElementsByClassName("answer-btn");
+var timerElement = document.getElementsByClassName("time");
 var timerCount = 10;
 var question;
-var answer;
 var setQuestion = (question);
 var scoreCount;
 
 //------------------------------------
 //QUESTIONS
 // list of all questions, choices, and answers (could use separate js file)
+var answers;
 var questions = [
     {
         question: "Inside which HTML element do we put the JavaScript?",
@@ -69,6 +70,7 @@ function beginQuiz() {
     let time = setInterval(startTime, 1000);
     console.log("This is our count", timerCount);
     setNextQuestion();
+    showAnswers();
 }
 
 function setNextQuestion() {
@@ -79,9 +81,12 @@ function showQuestion() {
     questionEl.textContent = questions[0].question;
 }
 
+function showAnswers() {
+    answersEl.textContent = questions[0].answers[0].answers;
+}
+
+let time;
 function startTime() {
-    // timer = setInterval;
-    // timerCount = 60;
     console.log(timerCount);
     timerCount--;
     timerElement.textContent = "Time: " + timerCount;
@@ -96,7 +101,7 @@ function startTime() {
 }
 
 function clearTimer() {
-    clearInterval(startTime);
+    clearInterval(time);
 }
 
 //submit score listener
@@ -144,8 +149,13 @@ function endScore() {
 
 
 //ENDING QUIZ - either when question ends or time endss
-// stop timer
-// show end screen
+if (timerCount <= 0) {
+    console.log("We are in the time log if statement");
+    // stop timer
+    clearTimer();
+    // show end screen
+    scoreEntryWindow.setAttribute("class", "show");
+}
 // show final score
 // hide questions section
 
@@ -159,14 +169,14 @@ function endScore() {
 // get value of input box
 var score = localStorage.getItem("scoreCount");
 
-	// make sure value wasn't empty
-	// get saved scores from localstorage, or if not any, set to empty array
-	// format new score object for current user
-	// save to localstorage
-	// redirect to next page
-	// "13" represents the enter key
-	// user clicks button to submit initials
-	// user clicks button to start quiz
+// make sure value wasn't empty
+// get saved scores from localstorage, or if not any, set to empty array
+// format new score object for current user
+// save to localstorage
+// redirect to next page
+// "13" represents the enter key
+// user clicks button to submit initials
+// user clicks button to start quiz
 
 
 //------------------------------------
@@ -175,8 +185,8 @@ var score = localStorage.getItem("scoreCount");
 
 
 //HIGH SCORE LOGIC (separate script for separate html page)
-	// either get scores from localstorage or set to empty array
-	// sort highscores by score property in descending order
-	// create li tag for each high score
-	// display on page
-	// run function when page loads
+// either get scores from localstorage or set to empty array
+// sort highscores by score property in descending order
+// create li tag for each high score
+// display on page
+// run function when page loads
