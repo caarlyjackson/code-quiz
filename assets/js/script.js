@@ -1,18 +1,20 @@
-const startButton = document.getElementById("start-btn");
-var highScoreButton = document.getElementsByClassName("high-score-btn"); // Goes to log of past high scores (with initials and inorder).
-var timerCount = document.getElementsByClassName("time");
-var NewScoreEl = document.getElementsByClassName("enter-new-score");
-var resetButton = document.getElementById("reset-btn");
-const questionEl = document.getElementById("question");
-var question = document.getElementsByClassName("question");
-const answers = document.getElementById("answer-options");
-const answerButtonsEl = document.getElementById("answer-btn");
-var scoreCount;
-var timerCount = [""];
-var correctAnswer = "";
+const startButton = document.getElementById("startBtn");
+const beginQuizWindow = document.getElementById("begin-quiz-window");
+const questionHolder = document.getElementById("question");
+const gameWindow = document.getElementById("game-window");
+const scoreEntryWindow = document.getElementById("score-entry-window");
+const highScoreButton = document.getElementById("high-score-btn");
+var timerCount = document.getElementById(time);
 
-// Questions with Answers and Correct Answer Array
-questionEl = [
+var question;
+var answer;
+var setQuestion = (question);
+var scoreCount;
+
+//------------------------------------
+//QUESTIONS
+// list of all questions, choices, and answers (could use separate js file)
+var questionEl = [
     {
         question: "Inside which HTML element do we put the JavaScript?",
         answers: [
@@ -51,123 +53,122 @@ questionEl = [
 
 ];
 
-// Init
-function init() {
-    getScore()
-}
+//------------------------------------
+//GAME LOGIC
+//EVENT LISTENERS
+//start event listenter
+startButton.onclick = beginQuiz;
+function beginQuiz() {
+    console.log("Started");
+    // show starting time
+    startTime;
+    timerCount = 60;
+    setNextQuestion();
 
-// Game begins.
-startButton.addEventListener("click", startGame === true); {
-    function startGame() {
-        console.log("Started");
-        startButton.classList.add("hide")
-        timerCount = 60;
-        setNextQuestion();
-
-        // Prevents start button from being clicked when round is in progress
-        startButton.disabled = true;
-        renderBlanks()
-        startTimer()
-    }
+    // Hide start screen
+    beginQuizWindow.setAttribute("class", "hide");
+    gameWindow.setAttribute("class", "show");
 }
-startGame();
 
 function setNextQuestion() {
-    resetState()
-    showQuestion(questionEl)
+    showQuestion(questionEl);
 }
 
-// Question and Answer
-function showQuestion(question) {
-    questionEl.innerText = question.question;
-    question.answers.array.forEach(answer => {
-        const button = document.createElement('button')
-        button.innerText = answer.text
-        button.classList.add('btn')
-
-        // If the user gets the correct answer
-        if (answer.correct) {
-            button.dataset.correct = answer.correct
-        }
-        button.addEventListener('click', selectAnswer)
-        answerButtonsEl.appendChild(button)
-    });
+function showQuestion() {
+    questionEl.textContent = question;
 }
 
-function selectAnswer() {
-
-}
-
-
-// Add in sound affect and alert to correct answer
-// } else { // If the user gets the wrong answer
-// // Lose 10 seconds from timeCount
-// timeCount--;
-// // Add in obnoxious sound affect and alert to wrong answer
-// }
-
-function setTime() {
-    // Sets interval in variable
-    var timerInterval = setInterval()
+function startTime() {
+    // timer = setInterval;
     timerCount = 60;
-    timeEl.textContent = secondsLeft;
+    timerCount--;
+    timerElement.textContent = ("Time: " + timerCount);
+
+    // Time runs out
+    if (timerCount === 0) {
+        textContent.scoreCount;
+        scoreEntryWindow.setAttribute("class", "show");
+    }
+}
+
+//submit score listener
+
+
+
+//EVENT LISTENERS
+//start event listenter
+//submit score listener
+function endScore() {
+    timerCount.nodeValue() = scoreCount.nodeValue();
+
 }
 
 
-// Go to Score and Initial
-function timeCount(addEventListener[event]) {
-    if (timeCount === 0) {
-        NewScoreEl.addEventListener("click", startGame === true); {
-            function startGame() {
-                console.log("Started");
-                startButton.classList.add("hide")
-                timerCount = 60;
-                setNextQuestion();
+// variables to keep track of quiz state
+// variables to reference DOM elements
+// import sound effects (optional)
 
-                // function timeCount.addEventListener(Event) {
-                //     if (timeCount === 0) {
-                function myFunction() { // Declare a function
-                    NewScoreEl.classList.add("hide")
-                }
-                myFunction(); // Call the function
-                return;
-            };
+//STARTING QUIZ
+// hide start screen
+// un-hide questions section
+// start timer (see TIME)
+// show starting time
 
-            // FINAL SCORE COUNT AND HIGH SCORE
-            // Local Storage Of Previous Scores
-            // User Info Variable
-            var Player = {
-                playerInitial: playerInitial.value,
-                scoreCount: timeCount.value,
-            };
-            // var newScore = document.getElementsByClassName("new-score");
-            var scoreCount = localStorage.getItem("count");
-            console.log(scoreCount);
-            scoreCount.textContent = "Your score is " + timeCount;
+//GETTING QUESTIONS
+// get current question object from array
+// update title with current question
+// clear out any old question choices
+// loop over choices
+// create new button for each choice
+// attach click event listener to each choice
+// display on the page
 
 
+//CLICKING ON QUESTIONS
+// check if user guessed wrong
+// penalize time
+// display new time on page
+// play "wrong" sound effect
+// play "right" sound effect
+// flash right/wrong feedback on page for half a second
+// move to next question
+// check if we've run out of questions
 
 
-            // High Score
-            highScore.textContent = playerInitial + " - " + scoreCount;
+//ENDING QUIZ - either when question ends or time endss
+// stop timer
+// show end screen
+// show final score
+// hide questions section
 
-            // View all High Scores page
-            function highScoreButton() {
-                highScoreButton.addEventListener(click,)
 
-                // Hide
-                highScoreButton.classList.add("hide")
-            }
+// TIME
+// update time
+// check if user ran out of time
 
-            // Reset button
-            var resetButton = document.querySelector(".reset-button");
-            function resetGame() {
-                // Resets score and loss counts
-                scoreCount = 0;
-                // Renders win and loss counts and sets them into client storage
-                setWins()
-                setLosses()
-            };
 
-            // Attaches event listener to button
-            resetButton.addEventListener("click", resetGame === true)
+// SAVING SCORE
+// get value of input box
+var score = localStorage.getItem("scoreCount");
+
+	// make sure value wasn't empty
+	// get saved scores from localstorage, or if not any, set to empty array
+	// format new score object for current user
+	// save to localstorage
+	// redirect to next page
+	// "13" represents the enter key
+	// user clicks button to submit initials
+	// user clicks button to start quiz
+
+
+//------------------------------------
+//HIGHSCORES LOGIC
+//------------------------------------
+
+
+//HIGH SCORE LOGIC (separate script for separate html page)
+	// either get scores from localstorage or set to empty array
+	// sort highscores by score property in descending order
+	// create li tag for each high score
+	// display on page
+	// run function when page loads

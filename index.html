@@ -13,21 +13,25 @@
 <body>
     <!-- HEADER -->
     <header>
-        <button class="high-score-btn btn hide" href="./high-score.html">View High Scores</button>
-        <div class="time">Time:</div>
+        <button id="high-score-btn" class="btn">
+            <a href="./high-score.html">View High Scores</a>
+        </button>
+        <div id="time"></div>
     </header>
 
     <main>
-        <div class="start-game" class="hide">
+        <!-- INSTRUCTIONS WINDOW -->
+        <div id="begin-quiz-window" class="show hide">
             <h1 class="page-title">Code Quiz</h1>
             <p>
                 Instructions.
             </p>
-            <button class="start-btn btn">Start</button>
+            <button id="startBtn" class="btn">Start</button>
         </div>
+        <br>
 
-        <!-- CONTAINER Game -->
-        <div class="game-container" class="hide">
+        <!-- GAME WINDOW -->
+        <div id="game-window" class="show hide">
             <h3 id="question" class="question" placeholder="Question"></h3>
             <div id="answer-options" class="list-vertical">
                 <button class="answer-btn" aria-placeholder="answer 1"></button>
@@ -36,8 +40,10 @@
                 <button class="answer-btn" aria-placeholder="answer 4"></button>
             </div>
         </div>
+        <br>
 
-        <div class="enter-new-score">
+        <!-- SCORE ENTRY WINDOW -->
+        <div id="score-entry-window" class="show hide">
             <input type="text">
             <p class="new-score hide"></p>
         </div>

@@ -26,7 +26,7 @@ h1, .page-title {
 }
 
 /* Buttons - High Score and Time */
-.high-score-btn {
+#high-score-btn {
     margin: 0 0 0 0;
     padding: 10px;
     float: left;
@@ -36,14 +36,14 @@ h1, .page-title {
     font-size: 15px;
 }
 
-.time {
+#time {
     margin: 0 0 0 0;
     padding: 10px;
     float: right;
 }
 
 /* Font Specifications for buttons */
-.time, .btn {
+#time, .btn {
     font-family: Helvetica, Arial, sans-serif;
     font-size: 15px;
 }
@@ -51,7 +51,7 @@ h1, .page-title {
 
 /* Instructions and Start Game */
 /* STILL WONT ALIGN TO CENTRE OF PAGE */
-.start-btn {
+#startBtn {
     width: 20px;
     height: 10px;
     margin: 0 0 0 0;
@@ -70,9 +70,13 @@ h1, .page-title {
     /* display: none; */
 }
 
+.show {
+    display: block;
+}
+
 
 /* Game */
-.game-container {
+#game-window {
     width: 600px;
     max-width: 60%;
     height: 300px;
@@ -135,10 +139,6 @@ p {
     align-items: center;
     justify-content: center;
     display: flex;
-}
-
-.new-score {
-
 }
 
 #btn:hover {
