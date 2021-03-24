@@ -4,8 +4,9 @@ const questionHolder = document.getElementById("question");
 const gameWindow = document.getElementById("game-window");
 const scoreEntryWindow = document.getElementById("score-entry-window");
 const highScoreButton = document.getElementById("high-score-btn");
-var timerCount = document.getElementById(time);
-
+const questionEl = document.getElementById("question");
+var timerElement = document.getElementById("time");
+var timerCount = 10;
 var question;
 var answer;
 var setQuestion = (question);
@@ -14,7 +15,7 @@ var scoreCount;
 //------------------------------------
 //QUESTIONS
 // list of all questions, choices, and answers (could use separate js file)
-var questionEl = [
+var questions = [
     {
         question: "Inside which HTML element do we put the JavaScript?",
         answers: [
@@ -60,14 +61,14 @@ var questionEl = [
 startButton.onclick = beginQuiz;
 function beginQuiz() {
     console.log("Started");
-    // show starting time
-    startTime;
-    timerCount = 60;
-    setNextQuestion();
-
     // Hide start screen
     beginQuizWindow.setAttribute("class", "hide");
     gameWindow.setAttribute("class", "show");
+    // show starting time
+    // startTime();
+    let time = setInterval(startTime, 1000);
+    console.log("This is our count", timerCount);
+    setNextQuestion();
 }
 
 function setNextQuestion() {
@@ -75,20 +76,27 @@ function setNextQuestion() {
 }
 
 function showQuestion() {
-    questionEl.textContent = question;
+    questionEl.textContent = questions[0].question;
 }
 
 function startTime() {
     // timer = setInterval;
-    timerCount = 60;
+    // timerCount = 60;
+    console.log(timerCount);
     timerCount--;
-    timerElement.textContent = ("Time: " + timerCount);
+    timerElement.textContent = "Time: " + timerCount;
 
     // Time runs out
-    if (timerCount === 0) {
-        textContent.scoreCount;
-        scoreEntryWindow.setAttribute("class", "show");
+    if (timerCount <= 0) {
+        console.log("We are in the time log if statement");
+        // textContent.scoreCount;
+        clearTimer();
+        // scoreEntryWindow.setAttribute("class", "show");
     }
+}
+
+function clearTimer() {
+    clearInterval(startTime);
 }
 
 //submit score listener

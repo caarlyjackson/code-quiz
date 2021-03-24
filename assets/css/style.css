@@ -67,7 +67,7 @@ h1, .page-title {
 
 /* HIDE */
 .hide {
-    /* display: none; */
+    display: none;
 }
 
 .show {
