@@ -13,26 +13,32 @@
 <body>
     <!-- HEADER -->
     <header>
+        <!-- 'View High Scores' Button -->
         <button id="high-score-btn" class="btn">
             <a href="./high-score.html">View High Scores</a>
         </button>
+
+        <!-- Time Counter -->
         <div id="time"></div>
     </header>
 
     <main>
         <!-- INSTRUCTIONS WINDOW -->
         <div id="begin-quiz-window" class="show">
+            <!-- Title -->
             <h1 class="page-title">Code Quiz</h1>
-            <p>
-                Instructions.
-            </p>
+
+            <!-- Instructions Block -->
+            <p>Instructions.</p>
+
+            <!-- Start Button -->
             <button id="startBtn" class="btn">Start</button>
         </div>
-        <br>
+
 
         <!-- GAME WINDOW -->
         <div id="game-window" class="hide">
-            <h3 id="question" class="question" placeholder="Question"></h3>
+            <h3 id="question"></h3>
             <div id="answer-options" class="list-vertical">
                 <button class="answer-btn"></button>
                 <button class="answer-btn"></button>
@@ -40,16 +46,22 @@
                 <button class="answer-btn"></button>
             </div>
         </div>
-        <br>
+
 
         <!-- SCORE ENTRY WINDOW -->
         <div id="score-entry-window" class="hide">
-            <input type="text">
-            <p class="new-score hide"></p>
+            <!-- Score Feedback, Text -->
+            <h2>All Done!</h2>
+            <p id="new-score"></p>
+            <!-- User Input -->
+            <input id="input-initials" type="text">
+            <!-- Submit Button -->
+            <button id="submit-btn" class="btn">Submit</button>
         </div>
     </main>
 
     <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/script-score-page.js"></script>
 </body>
 
 </html>

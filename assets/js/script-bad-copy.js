@@ -145,8 +145,8 @@ function timeCount() {
         // Local Storage Of Previous Scores
         // User Info Variable
         var Player = {
-            playerInitial: playerInitial.value,
-            scoreCount: timeCount.value,
+            playerInitial: playerInitial.value;
+            scoreCount: timeCount.value;
         };
         // var newScore = document.getElementsByClassName("new-score");
         var scoreCount = localStorage.getItem("count");

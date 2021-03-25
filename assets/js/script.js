@@ -6,11 +6,15 @@ const scoreEntryWindow = document.getElementById("score-entry-window");
 const highScoreButton = document.getElementById("high-score-btn");
 const questionEl = document.getElementById("question");
 const answersEl = document.getElementsByClassName("answer-btn");
+const resetButton = document.getElementById("reset-btn");
+const submitButton = document.getElementById("submit-btn");
 var timerElement = document.getElementsByClassName("time");
 var timerCount = 10;
 var question;
 var setQuestion = (question);
 var scoreCount;
+let Time;
+
 
 //------------------------------------
 //QUESTIONS
@@ -62,17 +66,22 @@ var questions = [
 startButton.onclick = beginQuiz;
 function beginQuiz() {
     console.log("Started");
-    // Hide start screen
+    // hide start screen
     beginQuizWindow.setAttribute("class", "hide");
+    // un-hide questions section
     gameWindow.setAttribute("class", "show");
     // show starting time
-    // startTime();
-    let time = setInterval(startTime, 1000);
+    Time = setInterval(startTime, 1000);
+    // let time = setInterval(startTime, 1000);
     console.log("This is our count", timerCount);
     setNextQuestion();
     showAnswers();
 }
 
+//GETTING QUESTIONS
+// get current question object from array
+// update title with current question
+// clear out any old question choices
 function setNextQuestion() {
     showQuestion(questionEl);
 }
@@ -82,10 +91,16 @@ function showQuestion() {
 }
 
 function showAnswers() {
-    answersEl.textContent = questions[0].answers[0].answers;
+    answersEl.textContent = questions[0].answers[0].answer;
 }
 
-let time;
+// loop over choices
+
+for (var i = 0; i < 4; i++) {
+
+}
+
+// let time;
 function startTime() {
     console.log(timerCount);
     timerCount--;
@@ -105,14 +120,8 @@ function clearTimer() {
 }
 
 //submit score listener
-
-
-
-//EVENT LISTENERS
-//start event listenter
-//submit score listener
 function endScore() {
-    timerCount.nodeValue() = scoreCount.nodeValue();
+    timerCount() = scoreCount();
 
 }
 
@@ -122,16 +131,15 @@ function endScore() {
 // import sound effects (optional)
 
 //STARTING QUIZ
-// hide start screen
-// un-hide questions section
-// start timer (see TIME)
-// show starting time
+// un-hide questions section /
+// start timer (see TIME) /
+// show starting time 
 
 //GETTING QUESTIONS
-// get current question object from array
-// update title with current question
-// clear out any old question choices
-// loop over choices
+// get current question object from array /
+// update title with current question /
+// clear out any old question choices /
+// loop over choices /
 // create new button for each choice
 // attach click event listener to each choice
 // display on the page
@@ -147,27 +155,37 @@ function endScore() {
 // move to next question
 // check if we've run out of questions
 
+//------------------------------------
+//ENDING QUIZ - either when question ends or time ends
+var newScore = document.getElementById("new-score");
+function endQuiz() {
+    newScore = timerCount.valueOf();
+    // check if user ran out of time
+    if (timerCount <= 0) {
+        console.log("We are in the time log if statement");
+        // stop timer
+        clearTimer();
+        // hide questions section
+        gameWindow.setAttribute("class", "hide");
+        // show end screen
+        scoreEntryWindow.setAttribute("class", "show");
 
-//ENDING QUIZ - either when question ends or time endss
-if (timerCount <= 0) {
-    console.log("We are in the time log if statement");
-    // stop timer
-    clearTimer();
-    // show end screen
-    scoreEntryWindow.setAttribute("class", "show");
+        // show final score
+        newScore.textContent = "Your final score is " + scoreCount;
+
+    }
 }
-// show final score
-// hide questions section
 
 
 // TIME
 // update time
-// check if user ran out of time
+// check if user ran out of time /
 
 
+//------------------------------------
 // SAVING SCORE
 // get value of input box
-var score = localStorage.getItem("scoreCount");
+newScore = localStorage.getItem("scoreCount");
 
 // make sure value wasn't empty
 // get saved scores from localstorage, or if not any, set to empty array
@@ -176,12 +194,16 @@ var score = localStorage.getItem("scoreCount");
 // redirect to next page
 // "13" represents the enter key
 // user clicks button to submit initials
+let userInfo = [];
+let initials = document.getElementById('input-initials');
+
+submitButton.onclick = recordResults;
+function recordResults(userInitials, scoreCount) {
+    userInitials = initials.value;
+    scoreCount = timerCount.value;
+}
 // user clicks button to start quiz
 
-
-//------------------------------------
-//HIGHSCORES LOGIC
-//------------------------------------
 
 
 //HIGH SCORE LOGIC (separate script for separate html page)

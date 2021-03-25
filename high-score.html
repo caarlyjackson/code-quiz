@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <link href="./high-score.html" />
+    <link href="./index.html" />
     <title>High Scores</title>
 </head>
 
@@ -14,17 +14,24 @@
     <main>
         <h1>High Scores</h1>
 
-        <ul>
-            <ol class="previous-scores"></ol>
-        </ul>
+        <div id="score-leaderboard">
+            <li class="previous-scores"></li>
+            </ul>
+        </div>
 
-        <!-- RESET BUTTON -->
-        <container class="highscore-buttons">
-            <button class="reset-btn btn">Reset</button>
-            <button class="clear-high-scores-btn btn">Clear Highscores</button>
+        <container>
+            <!-- Reset Button -->
+            <button id="reset-btn" class="btn">
+                <a href="./index.html">Reset</a>
+            </button>
+
+            <!-- Clear Button -->
+            <button id="clear-high-scores-btn" class="btn">Clear High Scores</button>
         </container>
+
     </main>
     <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/script-score-page.js"></script>
 </body>
 
 </html>
