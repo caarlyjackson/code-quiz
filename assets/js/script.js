@@ -93,7 +93,6 @@ function showQuestion() {
 
 function showAnswers() {
     answersEl.textContent = questions[0].answers[0].text;
-    // console.log(answers.onclick.value)
 }
 
 // loop over choices
@@ -172,12 +171,12 @@ function disableQuestions() {
 
 //CLICKING ON QUESTIONS
 // check if user guessed wrong
-// if (answers.value === false) {
-//     // penalize time
-//     timerCount--;
-//     // play "wrong" sound effect
+if (answers.value === false) {
+    // penalize time
+    timerCount--;
+    // play "wrong" sound effect
 
-// }
+}
 
 // display new time on page
 // play "wrong" sound effect

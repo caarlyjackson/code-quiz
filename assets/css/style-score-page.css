@@ -10,5 +10,17 @@ h1,
 }
 
 li {
-    
+
+}
+
+
+/* BUTTONS */
+.highscore-buttons {
+    justify-content: center;
+    display: flex;
+}
+
+.reset-btn {
+    align-self: center;
+    margin-bottom: 40px;
 }
