@@ -1,6 +1,5 @@
 const resetButton = document.getElementById("reset-btn");
 const clearButton = document.getElementById("clear-high-scores-btn");
-const submitButton = document.getElementById("submit-btn");
 const scoreLeaderboard = document.getElementById("score-leaderboard");
 
 

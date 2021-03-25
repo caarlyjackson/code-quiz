@@ -1,31 +1,63 @@
 * {
-    box-sizing: border-box;
-    border: 2px greenyellow;
+    border-width: 2px;
+    border-color:greenyellow;
 }
 
-/* Body */
+/* DOCUMENT */
+body {
+    margin: 60px;
+    margin-right: 60px;
+}
+
 main {
     padding: 0;
-    margin: 60px 100px 60px;
-    width: 100vw;
-    height: 100vh;
+    margin: 60px;
+    /* width: 100vw; */
+    /* height: 100vh; */
 }
 
-/* Header - High Score button and Time Count */
+div {
+    margin: 10px;
+}
+
 header {
     width: 100%;
     height: 40px;
     position: static;
 }
 
-h1, .page-title {
+
+/* HEADINGS AND FONTS */
+h1,
+.page-title {
     font-size: 50px;
     font-family: Helvetica, Arial, sans-serif;
     font-weight: 700;
     text-align: center;
+    /* justify-content: center; */
 }
 
-/* Buttons - High Score and Time */
+h3,
+#question {
+    font-size: 20px;
+    font-family: Helvetica, Arial, sans-serif;
+    margin: 5px 8px 20px 0;
+}
+
+
+/* BUTTONS - High Score and Time */
+#startBtn {
+    width: 20px;
+    height: 10px;
+    padding: 10px;
+    display: flex;
+    text-align: center;
+    border-width: 0;
+    background-color: white;
+    font-weight: 600;
+    font-size: 17px;
+}
+
 #high-score-btn {
     margin: 0 0 0 0;
     padding: 10px;
@@ -36,36 +68,24 @@ h1, .page-title {
     font-size: 15px;
 }
 
+/* Font Specifications for buttons */
+#time,
+.btn {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+
+/* TIME */
 #time {
     margin: 0 0 0 0;
     padding: 10px;
     float: right;
 }
 
-/* Font Specifications for buttons */
-#time, .btn {
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: 15px;
-}
 
-
-/* Instructions and Start Game */
-/* STILL WONT ALIGN TO CENTRE OF PAGE */
-#startBtn {
-    width: 20px;
-    height: 10px;
-    margin: 0 0 0 0;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-width: 0;
-    background-color: white;
-    font-weight: 600;
-    font-size: 17px;
-}
-
-/* HIDE */
+/* DISPLAY */
 .hide {
     display: none;
 }
@@ -75,7 +95,7 @@ h1, .page-title {
 }
 
 
-/* Game */
+/* WINDOWS */
 #game-window {
     width: 600px;
     max-width: 60%;
@@ -83,7 +103,6 @@ h1, .page-title {
     border-radius: 3px;
     justify-content: center;
     align-items: center;
-    position: absolute;
     /* Border */
     box-sizing: border-box;
     background-color: white;
@@ -91,14 +110,7 @@ h1, .page-title {
     border-width: 2.5px;
     border-style: solid;
     border-radius: 14px;
-    /* border-image: auto; */
     padding: 25px;
-}
-
-h3, #question {
-    font-size: 20px;
-    font-family: Helvetica, Arial, sans-serif;
-    margin: 5px 8px 20px 0;
 }
 
 
@@ -141,12 +153,10 @@ p {
     display: flex;
 }
 
+
+/* HOVER */
 #btn:hover {
     color: rgb(114, 53, 255);
-}
-
-#btn:active {
-    border: none;
 }
 
 .answer-btn:hover {
@@ -154,11 +164,25 @@ p {
     box-shadow: 0 0 4px 2px violet;
 }
 
+/* ACTIVE */
+#btn:active {
+    border: none;
+    text-decoration: none;
+    color: #000;
+}
+
+.links:active {
+    text-decoration: none;
+    color: 000;
+}
+
 .answer-btn:active {
     background-color: white;
     border-color: black;
 }
 
+
+/* ANSWER CHECK DESIGN */
 .answer-btn.correct {
     background-color: rgb(123, 255, 0);
     border-color: rgb(123, 255, 0);
@@ -170,7 +194,7 @@ p {
 }
 
 
-/* HIGH SCORE */
+/* HIGH SCORE PAGE */
 .previous-scores {
     padding: 5px;
 }
@@ -185,3 +209,10 @@ p {
     margin-bottom: 40px;
 }
 
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 700px) {
+    body {
+      max-width: 700px;
+    }
+}
