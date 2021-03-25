@@ -29,7 +29,13 @@
             <h1 class="page-title">Code Quiz</h1>
 
             <!-- Instructions Block -->
-            <p>Instructions.</p>
+            <p class="small-intro">Think you've got what it takes? Test your knowledge on JavaScript and HTML...</p>
+            <p class="welcome-text"><em>Welcome to Code Quiz!</em></p>
+            <p class="instructions-text">To play the quiz press the Start button and answer the
+                following questions in under a
+                minute to set a high score. If you get a question wrong you lose fifteen seconds to your timer and lower
+                your overall high score.</p>
+            <p class="goodluck-text">Good luck...</p>
 
             <!-- Start Button -->
             <button id="startBtn" class="btn">Start</button>
@@ -45,21 +51,25 @@
                 <button class="answer-btn"></button>
                 <button class="answer-btn"></button>
             </div>
-        </div>
 
+            <container>
+                <div class="alert hide" role="alert">
+                    <p class="wrong-answer">Wrong</p>
+                </div>
+            </container>
 
-        <!-- SCORE ENTRY WINDOW -->
-        <div id="score-entry-window" class="hide">
-            <!-- Score Feedback, Text -->
-            <h2>All Done!</h2>
-            <p id="new-score"></p>
-            <!-- User Input -->
-            <input id="input-initials" type="text">
-            <!-- Submit Button -->
-            <button id="submit-btn" class="btn">
-                <a class="links" href="./high-score.html">Submit</a>
-            </button>
-        </div>
+            <!-- SCORE ENTRY WINDOW -->
+            <div id="score-entry-window" class="hide">
+                <!-- Score Feedback, Text -->
+                <h2>All Done!</h2>
+                <p id="new-score"></p>
+                <!-- User Input -->
+                <input id="input-initials" type="text">
+                <!-- Submit Button -->
+                <button id="submit-btn" class="btn">
+                    <a class="links" href="./high-score.html">Submit</a>
+                </button>
+            </div>
     </main>
 
     <script src="./assets/js/script.js"></script>

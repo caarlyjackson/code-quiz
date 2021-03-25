@@ -12,7 +12,6 @@ var timerCount = 60;
 var question;
 var setQuestion = question;
 var scoreCount;
-let Time;
 
 
 //------------------------------------
@@ -75,6 +74,7 @@ function beginQuiz() {
     console.log("This is our count", timerCount);
     setNextQuestion();
     showAnswers();
+
     if (timerCount <= 0) {
         return beginQuiz;
     }
@@ -99,23 +99,43 @@ function showAnswers() {
 // loop over choices
 for (let i = 0; i < questions.length; i++) {
     console.log(questions[i]);
+
+
+    // Option for getting next question -- CJ...
+
+    // $('.questionForm #submit').click(function() {
+    //     //get data attribute
+    //     current = $(this).parents('form:first').data('question');
+    //     next = $(this).parents('form:first').data('question') + 1;
+
 }
 
-// let time;
-// start timer (see TIME)
+let time;
+// start timer(see TIME)
 function startTime() {
-    console.log(timerCount);
+    console.log(timerCount)
     timerCount--;
     timerElement.textContent = "Time: " + timerCount;
 
     // Time runs out
     if (timerCount <= 0) {
         console.log("We are in the time log if statement");
-        // textContent.scoreCount;
         clearTimer();
         // scoreEntryWindow.setAttribute("class", "show");
     }
 }
+
+timerCount--;
+timerElement.textContent = "Time: " + timerCount;
+
+// Time runs out
+if (timerCount <= 0) {
+    console.log("We are in the time log if statement");
+    // textContent.scoreCount;
+    clearTimer();
+    // scoreEntryWindow.setAttribute("class", "show");
+}
+
 
 function clearTimer() {
     clearInterval(time);
@@ -152,12 +172,12 @@ function disableQuestions() {
 
 //CLICKING ON QUESTIONS
 // check if user guessed wrong
-if (answers.value === false) {
-    // penalize time
-    timerCount--;
-    // play "wrong" sound effect
+// if (answers.value === false) {
+//     // penalize time
+//     timerCount--;
+//     // play "wrong" sound effect
 
-}
+// }
 
 // display new time on page
 // play "wrong" sound effect
@@ -173,6 +193,8 @@ function endQuiz() {
     newScore = timerCount.valueOf();
     // check if user ran out of time
     if (timerCount <= 0) {
+        $('.alert').alert()
+        alert.setAttribute("class", "show");
         beginQuiz.return;
         // hide questions section
         gameWindow.setAttribute("class", "hide");
@@ -191,36 +213,44 @@ function endQuiz() {
 // get value of input box
 newScore = localStorage.getItem("scoreCount");
 
-// make sure value wasn't empty
-
-// get saved scores from localstorage, or if not any, set to empty array
-
-
-
 // format new score object for current user
+var userInfo = {
+    userInitialsInput: value = initials,
+    timerCount: value = scoreCount
+}
+
 // user clicks button to submit initials​
 submitButton.onclick = handleFormSubmit;
 var handleFormSubmit = function (event) {
     event.preventDefault();
 
-    var userInitials = initials.val();
-    var scoreCount = timerCount.val();
-
+    // make sure value wasn't empty
     if (!nameInput) {
         console.log('You need to fill out your initials!');
+        alert('You need to fill out your initials!')
         return;
     }
 
     // save to localstorage
-    printSkills(userInitials, scoreCount);
-
-    userInitials.val('');
-    scoreCount.val('');
+    printSkills(userInfo);
 };
+
+localStorage.setItem("userInfo", JSON.stringify(userInfo));
+
+
+// get saved scores from localstorage, or if not any, set to empty array
+
+
+// format new score object for current user
+
 
 // user clicks button to submit initials
 formEl.on('submit', handleFormSubmit);
 
 // redirect to next page
 
+
 // "13" represents the enter key
+document.addEventListener(function (event) {
+    console.log(event.which, 13);
+})

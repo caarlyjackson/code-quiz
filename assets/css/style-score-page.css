@@ -1,0 +1,14 @@
+/* HEADING */
+h1,
+.high-score-title {
+    margin-top: 20px;
+    font-size: 50px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    text-align: center;
+    /* justify-content: center; */
+}
+
+li {
+    
+}
