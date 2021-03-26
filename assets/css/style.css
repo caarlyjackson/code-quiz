@@ -159,23 +159,21 @@ a {
     float: right;
 }
 
-.alert {
-    padding: 15px;
-    margin-left: 20%;
-    margin-right: 20%;
-    margin-bottom: 20px;
-    /* Position */
-    justify-content: center;
-    /* Box properties */
-    border: 1px solid rgb(255, 192, 76);
-    border-radius: 4px;
-    background-color: rgb(255, 203, 105);
-    /* Font properties */
-    font-family: Helvetica, Arial, sans-serif;
-    font-weight: 600px;
-    font-size: 15px;
+
+/* Answer - Correct / Wrong */
+.correct, .wrong {
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 800;
 }
 
+.correct {
+    color: rgb(123, 255, 0);
+}
+
+.wrong {
+    color: red;
+}
 
 /* DISPLAY */
 .hide {

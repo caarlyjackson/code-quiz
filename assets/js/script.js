@@ -87,11 +87,16 @@ function setNextQuestion() {
 }
 
 // update title with current question
-function showQuestion() {
-    questionEl.textContent = questions[0].question;
-}
+// let currentQuestion = 3;
+let currentQuestion = questionEl.length - 1;
+
+
+// function showQuestion() {
+//     questionEl.textContent = questions[currentQuestion].question;
+// }
 
 function showAnswers() {
+    console.log(questions[0].answers[0].text)
     answersEl.textContent = questions[0].answers[0].text;
 }
 
@@ -170,20 +175,34 @@ function disableQuestions() {
 
 
 //CLICKING ON QUESTIONS
-// check if user guessed wrong
-if (answers.value === false) {
-    // penalize time
-    timerCount--;
+answers.on('click', function () {
+    // check if user guessed wrong
+    // if (answers.value === false) {
+    //     // penalize time
+    //     timerCount--;
+    //     // play "wrong" sound effect
+
+    // }
+
+    // display new time on page
+    // document.getElementById("result").innerHTML = timerCount;
+
     // play "wrong" sound effect
+    alert.setAttribute("class", "wrong");
+
+    // play "right" sound effect
+    alert.setAttribute("class", "correct");
+
+    // flash right/wrong feedback on page for half a second
+    var correct
+    $(document.getElementsByClassName("correct")).stop().css("display", "block")
+        .animate({ dispay: "block" }, 500);
+
+    // move to next question
+    // check if we've run out of questions
 
 }
 
-// display new time on page
-// play "wrong" sound effect
-// play "right" sound effect
-// flash right/wrong feedback on page for half a second
-// move to next question
-// check if we've run out of questions
 
 //------------------------------------
 //ENDING QUIZ - either when question ends or time ends
@@ -213,10 +232,10 @@ function endQuiz() {
 newScore = localStorage.getItem("scoreCount");
 
 // format new score object for current user
-var userInfo = {
-    userInitialsInput: value = initials,
-    timerCount: value = scoreCount
-}
+// var userInfo = {
+//     userInitialsInput: value = initials,
+//     timerCount: value = scoreCount
+// }
 
 // user clicks button to submit initials​
 submitButton.onclick = handleFormSubmit;
@@ -234,7 +253,7 @@ var handleFormSubmit = function (event) {
     printSkills(userInfo);
 };
 
-localStorage.setItem("userInfo", JSON.stringify(userInfo));
+// localStorage.setItem("userInfo", JSON.stringify(userInfo));
 
 
 // get saved scores from localstorage, or if not any, set to empty array
@@ -244,12 +263,12 @@ localStorage.setItem("userInfo", JSON.stringify(userInfo));
 
 
 // user clicks button to submit initials
-formEl.on('submit', handleFormSubmit);
+// formEl.on('submit', handleFormSubmit);
 
 // redirect to next page
 
 
 // "13" represents the enter key
-document.addEventListener(function (event) {
-    console.log(event.which, 13);
-})
+// document.addEventListener(function (event) {
+//     console.log(event.which, 13);
+// })
