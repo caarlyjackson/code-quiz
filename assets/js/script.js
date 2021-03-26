@@ -13,6 +13,7 @@ var question;
 var setQuestion = question;
 var scoreCount;
 
+var intervalReference;
 
 //------------------------------------
 //QUESTIONS
@@ -60,8 +61,8 @@ var questions = [
 //GAME LOGIC
 //EVENT LISTENERS
 //start event listenter
-// user clicks button to start quiz
 startButton.onclick = beginQuiz;
+// user clicks button to start quiz
 function beginQuiz() {
     console.log("Started");
     // hide start screen
@@ -69,10 +70,10 @@ function beginQuiz() {
     // un-hide questions section
     gameWindow.setAttribute("class", "show");
     // show starting time // start timer (see TIME)
-    Time = setInterval(startTime, 1000);
-    // let time = setInterval(startTime, 1000);
+    intervalReference = setInterval(startCountdown, 1000);
+    // intervalReference.textContent = "Time: " + timerCount;
     console.log("This is our count", timerCount);
-    setNextQuestion();
+    // setNextQuestion();
     showAnswers();
 
     if (timerCount <= 0) {
@@ -81,7 +82,7 @@ function beginQuiz() {
 }
 
 //GETTING QUESTIONS
-// get current question object from array
+// get current question object from array -
 function setNextQuestion() {
     showQuestion(questionEl);
 }
@@ -91,9 +92,9 @@ function setNextQuestion() {
 let currentQuestion = questionEl.length - 1;
 
 
-// function showQuestion() {
-//     questionEl.textContent = questions[currentQuestion].question;
-// }
+function showQuestion() {
+    questionEl.textContent = questions[currentQuestion].question;
+}
 
 function showAnswers() {
     console.log(questions[0].answers[0].text)
@@ -103,34 +104,21 @@ function showAnswers() {
 // loop over choices
 for (let i = 0; i < questions.length; i++) {
     console.log(questions[i]);
-
-
-    // Option for getting next question -- CJ...
-
-    // $('.questionForm #submit').click(function() {
-    //     //get data attribute
-    //     current = $(this).parents('form:first').data('question');
-    //     next = $(this).parents('form:first').data('question') + 1;
-
 }
 
 let time;
 // start timer(see TIME)
-function startTime() {
+function startCountdown() {
     console.log(timerCount)
     timerCount--;
     timerElement.textContent = "Time: " + timerCount;
 
     // Time runs out
     if (timerCount <= 0) {
-        console.log("We are in the time log if statement");
         clearTimer();
         // scoreEntryWindow.setAttribute("class", "show");
     }
 }
-
-timerCount--;
-timerElement.textContent = "Time: " + timerCount;
 
 // Time runs out
 if (timerCount <= 0) {
@@ -142,7 +130,7 @@ if (timerCount <= 0) {
 
 
 function clearTimer() {
-    clearInterval(time);
+    clearInterval(intervalReference);
 }
 
 //submit score listener
@@ -165,7 +153,8 @@ function endScore() {
 
 
 // attach click event listener to each choice
-// + // CJ !!!
+
+
 // clear out any old question choices
 function disableQuestions() {
     questions[i].disabled;
@@ -175,33 +164,35 @@ function disableQuestions() {
 
 
 //CLICKING ON QUESTIONS
-answers.on('click', function () {
-    // check if user guessed wrong
-    // if (answers.value === false) {
-    //     // penalize time
-    //     timerCount--;
-    //     // play "wrong" sound effect
+var correct = document.getElementsByClassName("correct");
+var wrong = document.getElementsByClassName("wrong");
+// answersEl.on('click', function () {
+// check if user guessed wrong -
+// if (answers.value === false) {
+//     // penalize time
+//     timerCount--;
+//     // play "wrong" sound effect
 
-    // }
+// }
 
-    // display new time on page
-    // document.getElementById("result").innerHTML = timerCount;
+// display new time on page -
+// document.getElementById("result").innerHTML = timerCount;
 
-    // play "wrong" sound effect
-    alert.setAttribute("class", "wrong");
+// play "wrong" sound effect -
+// wrong.setAttribute("class", "wrong");
 
-    // play "right" sound effect
-    alert.setAttribute("class", "correct");
+// play "right" sound effect -
+// correct.setAttribute("class", "correct");
 
-    // flash right/wrong feedback on page for half a second
-    var correct
-    $(document.getElementsByClassName("correct")).stop().css("display", "block")
-        .animate({ dispay: "block" }, 500);
+// flash right/wrong feedback on page for half a second -
+// $("correct").stop().css("display", "block")
+//     .animate({ dispay: "block" }, 500);
 
-    // move to next question
-    // check if we've run out of questions
+// move to next question
 
-}
+// check if we've run out of questions
+
+// });
 
 
 //------------------------------------
@@ -232,10 +223,11 @@ function endQuiz() {
 newScore = localStorage.getItem("scoreCount");
 
 // format new score object for current user
-// var userInfo = {
-//     userInitialsInput: value = initials,
-//     timerCount: value = scoreCount
-// }
+var userInitialsInput = document.getElementById("initials-input");
+var userInfo = {
+    userInitialsInput: value = initials,
+    timerCount: value = scoreCount
+}
 
 // user clicks button to submit initials​
 submitButton.onclick = handleFormSubmit;
@@ -253,7 +245,7 @@ var handleFormSubmit = function (event) {
     printSkills(userInfo);
 };
 
-// localStorage.setItem("userInfo", JSON.stringify(userInfo));
+localStorage.setItem("userInfo", JSON.stringify(userInfo));
 
 
 // get saved scores from localstorage, or if not any, set to empty array
@@ -263,12 +255,12 @@ var handleFormSubmit = function (event) {
 
 
 // user clicks button to submit initials
-// formEl.on('submit', handleFormSubmit);
+formEl.on('submit', handleFormSubmit);
 
 // redirect to next page
 
 
 // "13" represents the enter key
-// document.addEventListener(function (event) {
-//     console.log(event.which, 13);
-// })
+document.addEventListener(function (event) {
+    console.log(event.which, 13);
+})
